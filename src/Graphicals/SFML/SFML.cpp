@@ -90,9 +90,9 @@ void SFML::CloseWindow()
 
 void SFML::PrintBlock(const float x, const float y, Texture text)
 {
-    sf::RectangleShape rec(sf::Vector2f(10, 10));
+    sf::RectangleShape rec(sf::Vector2f(40, 40));
 
-    rec.setPosition(x, y);
+    rec.setPosition(x * 40, y * 40);
     switch(text) {
         case 0:
             rec.setFillColor(sf::Color::Green);

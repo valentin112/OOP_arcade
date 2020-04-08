@@ -8,19 +8,19 @@
 all: 	 graphicals
 
 graphicals:
+		@make --no-print-directory -C ./SFML
 		@make --no-print-directory -C ./NCurses
-		# @make --no-print-directory -C ./SFML
-		# @make --no-print-directory -C ./SDL
+		@make --no-print-directory -C ./SDL
 
 clean:
+		@make --no-print-directory clean -C ./SFML
 		@make --no-print-directory clean -C ./NCurses
-		# @make --no-print-directory clean -C ./SFML
-		# @make --no-print-directory clean -C ./SDL
+		@make --no-print-directory clean -C ./SDL
 
 fclean:	clean
+		@make --no-print-directory fclean -C ./SFML
 		@make --no-print-directory fclean -C ./NCurses
-		# @make --no-print-directory fclean -C ./SFML
-		# @make --no-print-directory fclean -C ./SDL
+		@make --no-print-directory fclean -C ./SDL
 
 re:		fclean all
 

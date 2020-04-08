@@ -49,14 +49,43 @@ void SDL::CloseWindow()
 
 void SDL::PrintBlock(const float x, const float y, Texture texture)
 {
-    int ix = x, iy = y;
+    int ix = x * 25, iy = y * 25;
 
     SDL_Rect rect;
-    rect.x = ix;
-    rect.y = iy;
+    rect.x = iy;
+    rect.y = ix;
     rect.w = 25;
     rect.h = 25;
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    switch(texture) {
+        case 0:
+            SDL_SetRenderDrawColor(renderer, 0, 230, 64, 1);
+            break;
+        case 1:
+            SDL_SetRenderDrawColor(renderer, 78, 205, 196, 1);
+            break;
+        case 2:
+            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+            break;
+        case 3:
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 1);
+            break;
+        case 4:
+            SDL_SetRenderDrawColor(renderer, 255, 0, 0, 1);
+            break;
+        case 5:
+            SDL_SetRenderDrawColor(renderer, 0,255,255 ,1 );
+            break;
+        case 6:
+            SDL_SetRenderDrawColor(renderer, 0,255,255 ,1 );
+            break;
+        case 7:
+            SDL_SetRenderDrawColor(renderer, 0,255,255 ,1 );
+            break;
+        case 8:
+            SDL_SetRenderDrawColor(renderer, 255,0,255, 1);
+            break;
+    }
+    // SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderFillRect(renderer, &rect);
     SDL_RenderDrawRect(renderer, &rect);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -64,28 +93,29 @@ void SDL::PrintBlock(const float x, const float y, Texture texture)
 
 void SDL::PrintText(const float x, const float y, const int color, const std::string &str)
 {
-    int sizeX = 100, sizeY =100;
+    // int sizeX = 100, sizeY =100;
 
-    if (TTF_Init() == -1)
-        return; // Error handling idk
-    TTF_Init();
-    TTF_Font *font = TTF_OpenFont("./res/arcade.TTF", 65);
-    SDL_Color white = {255, 255, 255};
-    char content[str.size() + 1];
-    strcpy(content, str.c_str());
-    SDL_Surface *surface = TTF_RenderText_Solid(font, content, white);
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-    while (TTF_SizeText(font, content, &sizeX, &sizeY) == -1)
-        sizeX += 25;
-        sizeY += 25;
-    SDL_Rect rect;
-    rect.x = x;
-    rect.y = y;
-    rect.h = sizeX;
-    rect.y = sizeY;
-    SDL_RenderCopy(renderer, texture, NULL, &rect);
-    TTF_CloseFont(font);
-    TTF_Quit();
+    // if (TTF_Init() == -1)
+    //     return; // Error handling idk
+    // TTF_Init();
+    // TTF_Font *font = TTF_OpenFont("./res/arcade.TTF", 65);
+    // SDL_Color white = {255, 255, 255};
+    // char content[str.size() + 1];
+    // strcpy(content, str.c_str());
+    // SDL_Surface *surface = TTF_RenderText_Solid(font, content, white);
+    // SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+    // while (TTF_SizeText(font, content, &sizeX, &sizeY) == -1)
+    //     sizeX += 25;
+    //     sizeY += 25;
+    // SDL_Rect rect;
+    // rect.x = x;
+    // rect.y = y;
+    // rect.h = sizeX;
+    // rect.y = sizeY;
+    // SDL_RenderCopy(renderer, texture, NULL, &rect);
+    // TTF_CloseFont(font);
+    // TTF_Quit();
+    return;
 }
 
 void SDL::DisplayWindow()
@@ -120,7 +150,6 @@ void SDL::ProcessInput()
                 _key = DOWN;
                 break;
             case SDLK_q:
-                printf("q\n");
                 _key = LEFT;
                 break;
             case SDLK_RETURN:
@@ -151,12 +180,11 @@ void SDL::ProcessInput()
                 _key = SYS_BACK_TO_MENU;
                 break;
             default:
+                _key = UNDEFINED;
                 break;
         }
         if (event.type == SDL_QUIT)
             _key = SYS_EXIT;
-        else
-            _key = UNDEFINED;
     }
 }
 
