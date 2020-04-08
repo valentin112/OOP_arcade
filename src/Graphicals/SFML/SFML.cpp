@@ -74,7 +74,8 @@ KeyEnum SFML::KeyPressed()
 
 void SFML::InitWindow()
 {
-    _window.create(sf::VideoMode(960, 540), "Arcade");
+    _window.create(sf::VideoMode(1920, 1080), "Arcade");
+    // _window.create(sf::VideoMode(960, 540), "Arcade");
 }
 
 bool SFML::IsWindowOpen()
@@ -84,7 +85,6 @@ bool SFML::IsWindowOpen()
 
 void SFML::CloseWindow()
 {
-    printf("close\n");
     _window.close();
 }
 
@@ -92,7 +92,7 @@ void SFML::PrintBlock(const float x, const float y, Texture text)
 {
     sf::RectangleShape rec(sf::Vector2f(40, 40));
 
-    rec.setPosition(x * 40, y * 40);
+    rec.setPosition(y * 40, x * 40);
     switch(text) {
         case 0:
             rec.setFillColor(sf::Color::Green);
@@ -122,7 +122,6 @@ void SFML::PrintBlock(const float x, const float y, Texture text)
             rec.setFillColor(sf::Color::Magenta);
             break;
     }
-    rec.setFillColor(sf::Color::Blue); // use int color (enum)
     _window.draw(rec);
 }
 
@@ -139,7 +138,7 @@ void SFML::PrintText(const float x, const float y, const int color,
     text.setFont(font);
     text.setString(content);
     text.setFillColor(sf::Color::Red); // use int color (enum)
-    text.setPosition(x, y);
+    text.setPosition(y * 50, x * 50);
     _window.draw(text);
 }
 

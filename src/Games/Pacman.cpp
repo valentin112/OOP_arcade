@@ -118,7 +118,7 @@ WinCondition Pacman::movePlayer(int x, int y)
         } else
         return (LOSE);
     }
-    if (map[x][y] == 0) {
+    if (map[x][y] == 6) {
         if (can_eat_ghost) {
             map[x][y] = 0;
             map[old_x][old_y] = 3;
