@@ -35,28 +35,28 @@ void NCURSES::CloseWindow()
 void NCURSES::PrintBlock(const float x, const float y, Texture Texture)
 {
     if (Texture == 0)
-        mvprintw(x, y, "o");
+        mvprintw(y, x, "o");
     if (Texture == 1)
-        mvprintw(x, y, "X");
+        mvprintw(y, x, "X");
     if (Texture == 2)
-        mvprintw(x, y, " ");
+        mvprintw(y, x, " ");
     if (Texture == 3)
-        mvprintw(x, y, ".");
+        mvprintw(y, x, ".");
     if (Texture == 4)
-        mvprintw(x, y, ":");
+        mvprintw(y, x, ":");
     if (Texture == 5)
-        mvprintw(x, y, "F");
+        mvprintw(y, x, "F");
     if (Texture == 6)
-        mvprintw(x, y, "F");
+        mvprintw(y, x, "F");
     if (Texture == 7)
-        mvprintw(x, y, "F");
+        mvprintw(y, x, "F");
     if (Texture == 8)
-        mvprintw(x, y, " ");
+        mvprintw(y, x, " ");
 }
 
 void NCURSES::PrintText(const float x, const float y, const int color, const std::string &str)
 {
-    mvprintw(x, y, str.c_str());
+    mvprintw(y, x, str.c_str());
 }
 
 void NCURSES::DisplayWindow()

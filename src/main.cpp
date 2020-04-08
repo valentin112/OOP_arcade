@@ -25,7 +25,7 @@ void display(std::vector<std::vector<int>> map, IGraphicals &lib)
 {
     for (int i = 0; i < map.size(); i++) {
         for (int j = 0; j < map[i].size(); j++) {
-            lib.PrintBlock(i, j, static_cast<Texture>(map[i][j]));
+            lib.PrintBlock(j, i, static_cast<Texture>(map[i][j]));
         }
     }
 }
@@ -93,10 +93,10 @@ void menu(std::string str)
     KeyEnum key;
     while (1) {
         lib.ClearWindow();
-        lib.PrintText(0, 0, 2, "WELCOME TO OUR ARCADE");
-        lib.PrintText(1, 0, 2, "CHOOSE A GAME");
-        lib.PrintText(2, 0, 2, getGameName(core->getGames()[0]));
-        lib.PrintText(2, 10, 2, getGameName(core->getGames()[1]));
+        lib.PrintText(0, 0,  2, "WELCOME TO OUR ARCADE");
+        lib.PrintText(0, 1, 2, "CHOOSE A GAME");
+        lib.PrintText(0, 2, 2, getGameName(core->getGames()[0]));
+        lib.PrintText(10, 2, 2, getGameName(core->getGames()[1]));
         lib.DisplayWindow();
         lib.ProcessInput();
         key = lib.KeyPressed();

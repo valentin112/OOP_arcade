@@ -92,7 +92,7 @@ void SFML::PrintBlock(const float x, const float y, Texture text)
 {
     sf::RectangleShape rec(sf::Vector2f(40, 40));
 
-    rec.setPosition(y * 40, x * 40);
+    rec.setPosition(x * 40, y * 40);
     switch(text) {
         case 0:
             rec.setFillColor(sf::Color::Green);
@@ -138,7 +138,7 @@ void SFML::PrintText(const float x, const float y, const int color,
     text.setFont(font);
     text.setString(content);
     text.setFillColor(sf::Color::Red); // use int color (enum)
-    text.setPosition(y * 50, x * 50);
+    text.setPosition(x * 50, y * 50);
     _window.draw(text);
 }
 

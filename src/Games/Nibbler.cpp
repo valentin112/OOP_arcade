@@ -51,19 +51,19 @@ void Nibbler::exit()
 
 void Nibbler::movePlayer(int x, int y)
 {
-    // int i = 1;
-    // std::vector<int> tmp = {player_pos[0][0], player_pos[0][1]};
-    // std::vector<int> tmp2;
-    // map[tmp[0]][tmp[1]] = 0;
-    // player_pos[0][0] = x;
-    // player_pos[0][1] = y;
-    // while (i < player_pos.size()) {
-    //     tmp2 = player_pos[i];
-    //     player_pos[i] = tmp;
-    //     tmp = tmp2;
-    //     map[tmp[0]][tmp[1]] = 0;
-    // }
-    // map[tmp[0]][tmp[1]] = 2;
+    int i = 1;
+    std::vector<int> tmp = {player_pos[0][0], player_pos[0][1]};
+    std::vector<int> tmp2;
+    map[x][y] = 0;
+    player_pos[0][0] = x;
+    player_pos[0][1] = y;
+    while (i < player_pos.size()) {
+        tmp2 = player_pos[i];
+        player_pos[i] = tmp;
+        map[tmp[0]][tmp[1]] = 0;
+        tmp = tmp2;
+    }
+    map[tmp[0]][tmp[1]] = 2;
 }
 
 WinCondition Nibbler::Loop()
@@ -71,6 +71,7 @@ WinCondition Nibbler::Loop()
     int first_x = player_pos[0][0];
     int first_y = player_pos[0][1];
 
+    score += 1;
     if (newKey == UNDEFINED)
         return (NOT_ENDED);
     if (newKey == DOWN)
@@ -81,7 +82,7 @@ WinCondition Nibbler::Loop()
         first_y += 1;
     if (newKey == LEFT)
         first_y -= 1;
-    if (map[first_x][first_y] == 1)
+    if (map[first_x][first_y] == 1 || map[first_x][first_y] == 0)
         return (LOSE);
     if (map[first_x][first_y] == 2) {
         movePlayer(first_x, first_y);
