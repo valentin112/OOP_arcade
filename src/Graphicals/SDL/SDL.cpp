@@ -52,8 +52,8 @@ void SDL::PrintBlock(const float x, const float y, Texture texture)
     int ix = x * 25, iy = y * 25;
 
     SDL_Rect rect;
-    rect.x = iy;
-    rect.y = ix;
+    rect.x = ix;
+    rect.y = iy;
     rect.w = 25;
     rect.h = 25;
     switch(texture) {
